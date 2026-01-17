@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-silkscreen: 'Silkscreen', monospace;
+    --font-titillium: 'Titillium Web', sans-serif;
+  }
+
+  body {
+    /* Use the font variable from Next Font */
+    font-family: var(--font-titillium);
+    background-color: #e5e4e1; /* Your light theme base */
+  }
+}
+
+@layer utilities {
+  .retro-text {
+    font-family: var(--font-silkscreen);
+  }
+
+  /* Define background colors clearly */
+  .bg-primary {
+    background-color: #e5e4e1;
+  }
+  
+  /* Add a dark class specifically for the footer */
+  .bg-footer {
+    background-color: #000000;
+  }
+
+  .line-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.10;
+    z-index: 0;
+    background-image: repeating-linear-gradient(
+      grey 0px,
+      grey 1px,
+      transparent 1px,
+      transparent 5px
+    );
+  }
+}
