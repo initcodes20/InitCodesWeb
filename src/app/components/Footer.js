@@ -25,10 +25,10 @@ export default function Footer() {
           <div className="mt-8 flex space-x-6">
             <Link href="#" className="hover:text-accent transition-colors">
               {/* icon name must be lowercase: "share" */}
-              <span className="material-symbols-outlined">share</span>
+              <span className="material-symbols-outlined hover:text-[#e77544]">share</span>
             </Link>
             <Link href="#" className="hover:text-accent transition-colors">
-              <span className="material-symbols-outlined">email</span>
+              <span className="material-symbols-outlined hover:text-[#e77544]">email</span>
             </Link>
             <Link
               href="https://linkedin.com"
@@ -46,27 +46,27 @@ export default function Footer() {
           </h5>
           <ul className="space-y-4 text-sm font-mono tracking-widest">
             <li>
-              <a className="hover:text-accent transition-colors" href="#">
+              <Link className="hover:text-accent hover:text-[#e77544] transition-colors" href="#">
                 Manifesto
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                className="hover:text-accent transition-colors"
+              <Link
+                className="hover:text-accent hover:text-[#e77544] transition-colors"
                 href="#projects"
               >
                 Case Studies
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="hover:text-accent transition-colors" href="#">
+              <Link className="hover:text-accent hover:text-[#e77544] transition-colors" href="#">
                 Open Source
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="hover:text-accent transition-colors" href="#">
+              <Link className="hover:text-accent hover:text-[#e77544] transition-colors" href="#">
                 Careers
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

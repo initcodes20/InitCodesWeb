@@ -1,7 +1,9 @@
 import Link from "next/link";
+import FeaturedProjects from "@/app/components/FeaturedProjects";
 
 export default function Home() {
   return (
+    <>
     <main className="relative min-h-[88vh] md:min-h-screen overflow-hidden flex flex-col items-center justify-center text-center  px-6 bg-primary">
       {/* Background Dot Grid */}
       <div className="line-bg"></div>
@@ -46,5 +48,8 @@ export default function Home() {
         </div>
       </div>
     </main>
+         {/* FEATURED PROJECTS SECTION */}
+      <FeaturedProjects />
+    </>
   );
 }
