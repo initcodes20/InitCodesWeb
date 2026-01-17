@@ -88,7 +88,7 @@ export default function FeaturedProjects() {
               </p>
 
               {/* Footer Link */}
-              <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] group-hover:text-[#FF4D00] transition-colors">
+              <div className="flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.3em] group-hover:text-[#FF4D00] transition-colors">
                 Show More
                 <span className="material-symbols-outlined text-sm">
                   open_in_new
