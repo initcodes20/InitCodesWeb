@@ -11,7 +11,7 @@ export default function Home() {
           System Version 2.0.0
         </div>
 
-        <h1 className="font-display text-5xl md:text-9xl mb-6 tracking-tighter retro-text">
+        <h1 className="font-display text-4xl md:text-9xl mb-6 tracking-tighter retro-text">
           {"< INITCODES >"}
         </h1>
 
