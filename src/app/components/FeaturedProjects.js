@@ -16,7 +16,6 @@ export default function FeaturedProjects({ projects }) {
             </p>
           </div>
 
-          {/* #TODO; */}
           <Link
             href="/projects"
             className="hidden md:flex items-center gap-2 group font-bold uppercase text-[11px] tracking-[0.2em]"
@@ -54,7 +53,7 @@ export default function FeaturedProjects({ projects }) {
               </div>
 
               {/* Title and Description */}
-              <h3 className="retro-text text-2xl mb-3 tracking-tighter">
+              <h3 className="retro-text text-xl md:text-2xl mb-3 tracking-tighter">
                 {project.title}
               </h3>
               <p className="normal-text text-sm opacity-70 leading-relaxed mb-6 font-medium">

@@ -37,7 +37,7 @@ export default function BlogPage() {
               {/* Right Side: Content Column */}
               <div className="md:col-span-9 max-w-3xl">
                 <Link href={`/blog/${post.id}`} className="group block">
-                  <h2 className="text-5xl font-bold text-[#1a1f2e] leading-[1.1] mb-6 tracking-tight group-hover:text-black transition-colors">
+                  <h2 className="text-3xl md:text-5xl font-bold text-[#1a1f2e] leading-[1.1] mb-6 tracking-tight group-hover:text-black transition-colors">
                     {post.title}
                   </h2>
                   <p className="normal-text text-lg text-[#4a4a4a] leading-relaxed mb-10 opacity-80 group-hover:opacity-100 transition-opacity">
