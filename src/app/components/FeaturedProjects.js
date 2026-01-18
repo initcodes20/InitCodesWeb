@@ -1,35 +1,9 @@
 import Link from "next/link";
 
-const projects = [
-  {
-    title: "Neural Nexus",
-    description:
-      "A high-performance analytics engine for decentralized financial networks.",
-    tags: ["React", "Node.js", "AWS"],
-    image:
-      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2000&auto=format&fit=crop",
-  },
-  {
-    title: "Aegis Guard",
-    description:
-      "Real-time threat detection system using advanced machine learning models.",
-    tags: ["Python", "Tensorflow"],
-    image:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop",
-  },
-  {
-    title: "Flux Core",
-    description:
-      "Microservices orchestration platform designed for extreme scalability.",
-    tags: ["Vue.js", "GraphQL", "Go"],
-    image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000&auto=format&fit=crop",
-  },
-];
 
-export default function FeaturedProjects() {
+export default function FeaturedProjects({ projects }) {
   return (
-    <section className="py-24 px-6 !bg-[#eeeeec] relative overflow-hidden border-t border-black/5">
+    <section className="py-24 px-6 !bg-[#eeeeec] relative overflow-hidden border-2 border-black/5">
       <div className="max-w-7xl mx-auto relative z-10 text-black">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-end border-b-2 border-black pb-6 mb-12">
@@ -44,7 +18,7 @@ export default function FeaturedProjects() {
 
           {/* #TODO; */}
           <Link
-            href="/"
+            href="/projects"
             className="hidden md:flex items-center gap-2 group font-bold uppercase text-[11px] tracking-[0.2em]"
           >
             View All Projects

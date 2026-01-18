@@ -18,14 +18,23 @@ export default function Navbar() {
           <div className="font-display text-xl tracking-tighter cursor-pointer retro-text">
             {"<INIT>"}
           </div>
-          
+
           {/* Desktop Menu */}
+
           <div className="hidden md:flex items-center space-x-12 text-sm font-medium tracking-widest uppercase">
-            {["Home", "Projects", "Team", "Blog"].map((item) => (
-              <Link key={item} className="hover:text-accent transition-colors hover:text-[#FF4D00] duration-300" href={`#${item.toLowerCase()}`}>
-                {item}
-              </Link>
-            ))}
+            {["Home", "Projects", "Blog"].map((item) => {
+              const href = item === "Home" ? "/" : `/${item.toLowerCase()}`;
+
+              return (
+                <Link
+                  key={item}
+                  href={href}
+                  className="transition-colors duration-300 hover:text-[#FF4D00]"
+                >
+                  {item}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Action Buttons & Mobile Toggle */}
@@ -35,12 +44,16 @@ export default function Navbar() {
             </button>
 
             {/* Hamburger / Close Icon Toggle */}
-            <button 
+            <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-2 flex items-center justify-center w-10 h-10 transition-all active:scale-90"
             >
               <span className="material-symbols-outlined text-md">
-                {isOpen ? <span className="text-2xl font-bold text-[#FF4D00]">X</span> : "MENU"}
+                {isOpen ? (
+                  <span className="text-2xl font-bold text-[#FF4D00]">X</span>
+                ) : (
+                  "MENU"
+                )}
               </span>
             </button>
           </div>
@@ -48,20 +61,48 @@ export default function Navbar() {
       </nav>
 
       {/* Full Screen Mobile Overlay */}
-      <div className={`
+      <div
+        className={`
         fixed inset-0 z-40 md:hidden transition-all duration-500 ease-in-out
-        ${isOpen ? "visible opacity-100 backdrop-blur-lg bg-background-light/40 dark:bg-background-dark/60" : "invisible opacity-0"}
-      `}>
+        ${
+          isOpen
+            ? "visible opacity-100 backdrop-blur-lg bg-background-light/40 dark:bg-background-dark/60"
+            : "invisible opacity-0"
+        }
+      `}
+      >
         <div className="flex flex-col items-center justify-center h-full space-y-10 p-6">
-          <Link onClick={() => setIsOpen(false)} style={{ transitionDelay: '100ms' }} className={linkStyles} href="#">Home</Link>
-                    <Link onClick={() => setIsOpen(false)} style={{ transitionDelay: '300ms' }} className={linkStyles} href="#blog">Blog</Link>
-          <Link onClick={() => setIsOpen(false)} style={{ transitionDelay: '200ms' }} className={linkStyles} href="#projects">Projects</Link>
-          <Link onClick={() => setIsOpen(false)} style={{ transitionDelay: '300ms' }} className={linkStyles} href="#team">Team</Link>
-          <Link 
-          href={"/"} 
-            style={{ transitionDelay: '400ms' }}
+          <Link
+            onClick={() => setIsOpen(false)}
+            style={{ transitionDelay: "100ms" }}
+            className={linkStyles}
+            href="#"
+          >
+            Home
+          </Link>
+          <Link
+            onClick={() => setIsOpen(false)}
+            style={{ transitionDelay: "300ms" }}
+            className={linkStyles}
+            href="#blog"
+          >
+            Blog
+          </Link>
+          <Link
+            onClick={() => setIsOpen(false)}
+            style={{ transitionDelay: "200ms" }}
+            className={linkStyles}
+            href="#projects"
+          >
+            Projects
+          </Link>
+          <Link
+            href={"/"}
+            style={{ transitionDelay: "400ms" }}
             className={`bg-primary text-white dark:bg-white dark:text-black px-12 py-4 text-xs font-bold uppercase tracking-[0.3em] transition-all duration-500
-            ${isOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+            ${
+              isOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+            }`}
           >
             Login
           </Link>

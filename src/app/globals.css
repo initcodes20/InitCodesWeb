@@ -2,14 +2,26 @@
 
 @layer base {
   :root {
-    --font-silkscreen: 'Silkscreen', monospace;
-    --font-titillium: 'Titillium Web', sans-serif;
+    --font-silkscreen: "Silkscreen", monospace;
+    --font-titillium: "Titillium Web", sans-serif;
   }
 
   body {
     /* Use the font variable from Next Font */
     font-family: var(--font-titillium);
     background-color: #e5e4e1; /* Your light theme base */
+  }
+  /* This targets the text selection behavior */
+  ::selection {
+    background-color: #000000e0; /* Black background */
+    color: #ffffff; /* White text */
+    text-shadow: none; /* Ensures the text stays sharp */
+  }
+
+  /* For Firefox compatibility */
+  ::-moz-selection {
+    background-color: #000000e0;
+    color: #ffffff;
   }
 }
 
@@ -22,7 +34,7 @@
   .bg-primary {
     background-color: #e5e4e1;
   }
-  
+
   /* Add a dark class specifically for the footer */
   .bg-footer {
     background-color: #000000;
@@ -32,7 +44,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.10;
+    opacity: 0.1;
     z-index: 0;
     background-image: repeating-linear-gradient(
       grey 0px,
