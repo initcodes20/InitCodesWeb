@@ -76,7 +76,7 @@ export default function Navbar() {
             onClick={() => setIsOpen(false)}
             style={{ transitionDelay: "100ms" }}
             className={linkStyles}
-            href="#"
+            href="/"
           >
             Home
           </Link>
@@ -92,7 +92,7 @@ export default function Navbar() {
             onClick={() => setIsOpen(false)}
             style={{ transitionDelay: "200ms" }}
             className={linkStyles}
-            href="#projects"
+            href="/projects"
           >
             Projects
           </Link>
