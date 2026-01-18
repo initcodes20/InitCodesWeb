@@ -31,7 +31,7 @@ export default function FeaturedProjects({ projects }) {
         {/* Project Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {projects.map((project, index) => (
-            <div key={index} className="group cursor-pointer">
+            <div key={index} className="group cursor-pointer border-2 border-black/5 p-3 hover:border-neutral-500/30">
               {/* Image Container with Grayscale Effect */}
               <div className="relative aspect-[16/9] mb-6 overflow-hidden border border-black/10 bg-black">
                 <img

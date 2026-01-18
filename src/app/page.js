@@ -1,7 +1,7 @@
 import Link from "next/link";
 import FeaturedProjects from "@/app/components/FeaturedProjects";
 import TeamSection from "@/app/components/ourTeam";
-import {projects} from "@/app/data/project"
+import { projects } from "@/app/data/project";
 
 export default function Home() {
   return (
@@ -26,7 +26,7 @@ export default function Home() {
 
           <div className="flex gap-6 justify-center">
             <Link
-              href="/"
+              href="/projects"
               className="group relative px-10 py-4 bg-black text-white font-bold uppercase tracking-widest text-sm overflow-hidden inline-block"
             >
               <span className="relative z-10">Explore Work</span>
@@ -74,9 +74,13 @@ export default function Home() {
         </div>
       </main>
       {/* FEATURED PROJECTS SECTION */}
-      <div><FeaturedProjects projects={projects.slice(0, 3)} /></div>
+      <div>
+        <FeaturedProjects projects={projects.slice(0, 3)} />
+      </div>
       {/* OUR TEAM */}
-      <div><TeamSection/></div>
+      <div>
+        <TeamSection />
+      </div>
     </>
   );
 }

@@ -31,7 +31,7 @@ export default function Footer() {
               <span className="material-symbols-outlined hover:text-[#e77544]">email</span>
             </Link>
             <Link
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/init-codes-106141389/"
               className="hover:text-[#e77544] transition-colors"
             >
               <i className="fa-brands fa-linkedin text-xl"></i>

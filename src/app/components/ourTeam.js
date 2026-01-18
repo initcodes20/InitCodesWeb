@@ -14,7 +14,7 @@ export default function TeamSection() {
   return (
     <section
       id="team"
-      className="py-24 px-6 !bg-[#e5e4e1] relative overflow-hidden"
+      className="py-24 px-6 !bg-[#e5e4e1] relative overflow-hidden "
     >
       {/* Background Scanlines */}
       <div className="line-bg opacity-10"></div>
@@ -22,10 +22,10 @@ export default function TeamSection() {
       <div className="max-w-7xl mx-auto relative z-10 text-center">
         {/* Section Header */}
         <div className="mb-20 inline-block">
-          <h2 className="retro-text text-3xl md:text-4xl uppercase tracking-[0.4em] mb-4">
+          <h2 className="retro-text text-3xl md:text-4xl italic uppercase tracking-[0.3em] mb-4">
             The Brain Trust
           </h2>
-          {/* The orange accent line seen in the screenshot */}
+          {/* The orange accent line */}
           <div className="h-1.5 w-20 bg-[#FF4D00] mx-auto"></div>
         </div>
 
