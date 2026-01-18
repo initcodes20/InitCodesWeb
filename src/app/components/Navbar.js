@@ -39,9 +39,9 @@ export default function Navbar() {
 
           {/* Action Buttons & Mobile Toggle */}
           <div className="flex items-center space-x-4">
-            <button className="hidden sm:block bg-primary hover:text-[#FF4D00] text-white dark:bg-white dark:text-black px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-accent transition-all">
+            <Link href={"/login"} className="hidden sm:block bg-primary hover:text-[#FF4D00] text-white dark:bg-white dark:text-black px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-accent transition-all">
               Login
-            </button>
+            </Link>
 
             {/* Hamburger / Close Icon Toggle */}
             <button
@@ -97,7 +97,7 @@ export default function Navbar() {
             Projects
           </Link>
           <Link
-            href={"/"}
+            href={"/login"}
             style={{ transitionDelay: "400ms" }}
             className={`bg-primary text-white dark:bg-white dark:text-black px-12 py-4 text-xs font-bold uppercase tracking-[0.3em] transition-all duration-500
             ${
