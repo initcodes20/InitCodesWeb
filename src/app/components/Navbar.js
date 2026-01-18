@@ -39,9 +39,9 @@ export default function Navbar() {
 
           {/* Action Buttons & Mobile Toggle */}
           <div className="flex items-center space-x-4">
-            <Link href={"/login"} className="hidden sm:block bg-primary hover:text-[#FF4D00] text-white dark:bg-white dark:text-black px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-accent transition-all">
+            {/* <Link href={"/login"} className="hidden sm:block bg-primary hover:text-[#FF4D00] text-white dark:bg-white dark:text-black px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-accent transition-all">
               Login
-            </Link>
+            </Link> */}
 
             {/* Hamburger / Close Icon Toggle */}
             <button

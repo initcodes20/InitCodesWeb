@@ -68,6 +68,11 @@ export default function Footer() {
                 Careers
               </Link>
             </li>
+             <li>
+              <Link className="hover:text-accent hover:text-[#e77544] transition-colors" href="/login">
+              ADMIN Login
+              </Link>
+            </li>
           </ul>
         </div>
 
