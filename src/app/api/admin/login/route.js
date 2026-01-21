@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import { connectDB } from "@/lib/mongodb";
-import Admin from "@/app/models/admin";
+import Admin from "@/models/Admin"
 
 export async function POST(req) {
   try {
@@ -19,10 +20,13 @@ export async function POST(req) {
 
     // 2. Find admin
     const admin = await Admin.findOne({ email });
+console.log("ENV EMAIL:", process.env.ADMIN_EMAIL);
+console.log("INPUT EMAIL:", email, admin);
+
     if (!admin) {
       return NextResponse.json(
-        { error: "Admin not found" },
-        { status: 404 }
+        { error: "Invalid credentials" },
+        { status: 401 }
       );
     }
 
@@ -35,17 +39,28 @@ export async function POST(req) {
       );
     }
 
-    // 4. Success
-    return NextResponse.json(
-      {
-        message: "Login successful",
-        admin: {
-          id: admin._id,
-          email: admin.email,
-        },
-      },
+    // 4. Create JWT
+    const token = jwt.sign(
+      { adminId: admin._id, email: admin.email },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
+    );
+
+    // 5. Set HttpOnly cookie
+    const response = NextResponse.json(
+      { message: "Login successful" },
       { status: 200 }
     );
+
+    response.cookies.set("admin_token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      path: "/",
+      maxAge: 60 * 60 * 24, // 1 day
+    });
+
+    return response;
 
   } catch (error) {
     return NextResponse.json(
