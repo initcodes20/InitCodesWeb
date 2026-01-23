@@ -1,8 +1,24 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from "next/navigation";
 
 export default function Dashboard() {
+
+    const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/admin/logout", {
+        method: "POST",
+      });
+
+      // Force reload so middleware re-runs
+      window.location.href = "/login";
+    } catch (err) {
+      console.error("Logout failed");
+    }
+  };
   // Mock stats - in a real app, these would be fetched from your API
   const stats = [
     { label: "Total Insights", value: "24", growth: "+2 this week" },
@@ -30,7 +46,7 @@ export default function Dashboard() {
           ))}
         </nav>
 
-        <button className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-500 hover:text-red-400 text-left">
+        <button onClick={handleLogout} className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-500 hover:text-red-400 text-left">
           Terminate Session
         </button>
       </aside>
