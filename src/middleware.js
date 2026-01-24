@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export function middleware(req) {
   const { pathname } = req.nextUrl;
   const token = req.cookies.get("admin_token")?.value;
-  console.log(token);
+  // console.log(token);
   
 
   // ✅ Logged-in users should not see /login

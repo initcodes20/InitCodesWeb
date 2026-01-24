@@ -35,10 +35,10 @@ export default function Dashboard() {
         </div>
         
         <nav className="space-y-6 flex-1 ">
-          {['Overview', 'Manage Blogs', 'Project Editor', 'Team Trust', 'Settings'].map((item) => (
+          {['Revenue', 'Manage Blogs', 'Project Editor', 'Team Trust'].map((item) => (
             <Link 
               key={item} 
-              href="#" 
+              href={`/admin/${item.toLocaleLowerCase()}`}
               className="block text-[10px] font-bold uppercase tracking-[0.2em] opacity-50 hover:opacity-100 hover:text-[#FF4D00] transition-all"
             >
               {item}
