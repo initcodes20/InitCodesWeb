@@ -140,7 +140,7 @@ const AddTeamPage = () => {
             {/* FORM SECTION */}
             <div className="lg:col-span-5">
               <div className="bg-white rounded-3xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.02)] border border-white">
-                <h2 className="text-xs font-black uppercase tracking-[0.2em] mb-8 text-black opacity-30">
+                <h2 className="text-xs font-bold uppercase tracking-[0.2em] mb-8 text-black opacity-30">
                   {editingId ? "Modify Infrastructure" : "Add New Entry"}
                 </h2>
 
@@ -191,7 +191,7 @@ const AddTeamPage = () => {
                   <div className="flex gap-3 pt-4">
                     <button
                       disabled={loading}
-                      className="flex-1 bg-black hover:bg-[#FF4D00] text-white rounded-xl py-4 flex items-center justify-center gap-3 transition-all active:scale-[0.98] group shadow-lg shadow-black/10 disabled:opacity-50"
+                      className="flex-1 bg-black hover:bg-[#FF4D00] text-white rounded-xl py-4 px-1 flex items-center justify-center gap-3 transition-all active:scale-[0.98] group shadow-lg shadow-black/10 disabled:opacity-50"
                     >
                       <span className="text-xs font-bold uppercase tracking-[0.3em]">
                         {loading ? "Processing..." : editingId ? "Update Member" : "Deploy Member"}
@@ -216,7 +216,7 @@ const AddTeamPage = () => {
             {/* LIST SECTION */}
             <div className="lg:col-span-7">
               <div className="bg-white rounded-3xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.02)] border border-white min-h-[500px]">
-                <h2 className="text-xs font-black uppercase tracking-[0.2em] mb-8 text-black opacity-30">
+                <h2 className="text-xs font-bold uppercase tracking-[0.2em] mb-8 text-black opacity-30">
                   Active Brain Trust
                 </h2>
 
@@ -237,13 +237,13 @@ const AddTeamPage = () => {
                           </div>
                           <div>
                             <p className="font-bold text-black text-sm">{member.name}</p>
-                            <p className="text-[10px] uppercase font-black tracking-widest opacity-40">
+                            <p className="text-[10px] uppercase font-bold tracking-widest opacity-40">
                               {member.designation}
                             </p>
                           </div>
                         </div>
 
-                        <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-all">
+                        <div className="flex justify-end gap-1 md:gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300">
                           <button
                             onClick={() => startEdit(member)}
                             className="p-2 hover:bg-black hover:text-white rounded-lg transition-colors"

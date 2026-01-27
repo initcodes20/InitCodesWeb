@@ -10,7 +10,6 @@ export async function DELETE(req, { params }) {
     await connectDB();
 
     const { id } = await params;
-    console.log(id)
     const deletedMember = await Teams.findByIdAndDelete(id);
 
     if (!deletedMember) {
