@@ -16,7 +16,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           {/* Logo */}
           <div className="font-display text-xl tracking-tighter cursor-pointer retro-text">
-            {"<INIT>"}
+            <Link href={"/"}>{"< INIT >"}</Link>
           </div>
 
           {/* Desktop Menu */}

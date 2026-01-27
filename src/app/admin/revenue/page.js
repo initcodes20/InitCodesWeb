@@ -11,7 +11,7 @@ const Page = () => {
       <main className="flex-1 p-8 md:p-12 mt-20"> 
         <div className="max-w-7xl mx-auto">
           <header className="border-b-2 border-black pb-6 mb-12">
-            <h1 className="text-3xl font-bold uppercase tracking-tighter">
+            <h1 className="text-3xl font-medium uppercase tracking-tighter retro-text">
               ADD REVENUE
             </h1>
           </header>

@@ -2,6 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from "next/navigation";
+import Sidebar from '@/app/components/Sidebar';
 
 export default function Dashboard() {
 
@@ -27,36 +28,16 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="min-h-screen !bg-[#e5e4e1] flex selection:bg-black selection:text-white mt-20 ">
-      {/* Sidebar Navigation */}
-      <aside className="w-64 bg-black text-white p-8 flex flex-col hidden md:flex">
-        <div className="retro-text text-xl mb-12 tracking-tighter">
-          {"< INIT >"}
-        </div>
-        
-        <nav className="space-y-6 flex-1 ">
-          {['Revenue', 'Blogs', 'Projects', 'Teams'].map((item) => (
-            <Link 
-              key={item} 
-              href={`/admin/${item.toLocaleLowerCase()}`}
-              className="block text-[10px] font-bold uppercase tracking-[0.2em] opacity-50 hover:opacity-100 hover:text-[#FF4D00] transition-all"
-            >
-              {item}
-            </Link>
-          ))}
-        </nav>
-
-        <button onClick={handleLogout} className="text-[10px] font-bold uppercase tracking-[0.2em] text-red-500 hover:text-red-400 text-left">
-          Terminate Session
-        </button>
-      </aside>
-
+    <div className="min-h-screen !bg-[#e5e4e1] flex selection:bg-black selection:text-white">
+      <>
+      <Sidebar/>
+      </>
       {/* Main Content Area */}
       <main className="flex-1 p-8 md:p-12 relative overflow-hidden">
         <div className="line-bg opacity-5"></div>
 
         {/* Top Header */}
-        <header className="flex justify-between items-end border-b-2 border-black pb-6 mb-12 relative z-10">
+        <header className="flex justify-between items-end border-b-2 border-black pb-6 mb-12 relative z-10 mt-15">
           <div>
             <h1 className="retro-text text-3xl uppercase tracking-tighter text-bold">
               Admin Dashboard

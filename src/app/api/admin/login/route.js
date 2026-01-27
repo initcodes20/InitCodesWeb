@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { connectDB } from "@/lib/mongodb";
-import Admin from "@/models/Admin"
+import Admin from "@/models/Admin";
 
 export async function POST(req) {
   try {
@@ -14,19 +14,19 @@ export async function POST(req) {
     if (email !== process.env.ADMIN_EMAIL) {
       return NextResponse.json(
         { error: "Unauthorized access" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
     // 2. Find admin
     const admin = await Admin.findOne({ email });
-console.log("ENV EMAIL:", process.env.ADMIN_EMAIL);
-console.log("INPUT EMAIL:", email, admin);
+    // console.log("ENV EMAIL:", process.env.ADMIN_EMAIL);
+    // console.log("INPUT EMAIL:", email, admin);
 
     if (!admin) {
       return NextResponse.json(
         { error: "Invalid credentials" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -35,7 +35,7 @@ console.log("INPUT EMAIL:", email, admin);
     if (!isMatch) {
       return NextResponse.json(
         { error: "Invalid credentials" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -43,13 +43,13 @@ console.log("INPUT EMAIL:", email, admin);
     const token = jwt.sign(
       { adminId: admin._id, email: admin.email },
       process.env.JWT_SECRET,
-      { expiresIn: "1d" }
+      { expiresIn: "1d" },
     );
 
     // 5. Set HttpOnly cookie
     const response = NextResponse.json(
       { message: "Login successful" },
-      { status: 200 }
+      { status: 200 },
     );
 
     response.cookies.set("admin_token", token, {
@@ -61,11 +61,7 @@ console.log("INPUT EMAIL:", email, admin);
     });
 
     return response;
-
   } catch (error) {
-    return NextResponse.json(
-      { error: "Server error" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }

@@ -27,11 +27,11 @@ export default function Footer() {
               {/* icon name must be lowercase: "share" */}
               <span className="material-symbols-outlined hover:text-[#e77544]">share</span>
             </Link>
-            <Link href="#" className="hover:text-accent transition-colors">
+            <Link href="mailto:initcodes20@gmail.com" className="hover:text-accent transition-colors">
               <span className="material-symbols-outlined hover:text-[#e77544]">email</span>
             </Link>
             <Link
-              href="https://www.linkedin.com/in/init-codes-106141389/"
+              href="https://www.linkedin.com/company/initcodes-org"
               className="hover:text-[#e77544] transition-colors"
             >
               <i className="fa-brands fa-linkedin text-xl"></i>
