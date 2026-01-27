@@ -35,7 +35,7 @@ export default function Dashboard() {
         </div>
         
         <nav className="space-y-6 flex-1 ">
-          {['Revenue', 'Manage Blogs', 'Project Editor', 'Team Trust'].map((item) => (
+          {['Revenue', 'Blogs', 'Projects', 'Teams'].map((item) => (
             <Link 
               key={item} 
               href={`/admin/${item.toLocaleLowerCase()}`}
@@ -87,27 +87,10 @@ export default function Dashboard() {
         {/* Content Table / Recent Activity */}
         <div className="bg-white rounded-3xl p-8 shadow-sm border border-white relative z-10">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-bold">Recent Logs</h2>
+            <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-bold">Revenue Dashboard</h2>
             <button className="bg-black text-white px-4 py-2 text-[9px] font-bold uppercase tracking-widest hover:bg-[#FF4D00] transition-colors">
-              + New Insight
+              Current Year Report
             </button>
-          </div>
-
-          <div className="space-y-4">
-            {[1, 2, 3].map((_, i) => (
-              <div key={i} className="flex items-center justify-between py-4 border-b border-black/5 last:border-0">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-[#f8f9fa] rounded-lg flex items-center justify-center">
-                    <span className="material-symbols-outlined text-lg opacity-40">description</span>
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-bold">Moving from Monolith to Micro-frontends...</p>
-                    <p className="text-[9px] uppercase tracking-tighter opacity-40 font-bold">Drafted 2 hours ago</p>
-                  </div>
-                </div>
-                <span className="material-symbols-outlined opacity-20 cursor-pointer hover:opacity-100 transition-opacity">edit</span>
-              </div>
-            ))}
           </div>
         </div>
       </main>

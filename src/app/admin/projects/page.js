@@ -12,7 +12,7 @@ const Page = () => {
         <div className="max-w-7xl mx-auto">
           <header className="border-b-2 border-black pb-6 mb-12">
             <h1 className="text-3xl font-bold uppercase tracking-tighter">
-              ADD REVENUE
+              ADD PROJECTS
             </h1>
           </header>
 
