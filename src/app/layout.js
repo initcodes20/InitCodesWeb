@@ -1,5 +1,7 @@
 import "./globals.css";
 import { Silkscreen, Titillium_Web } from "next/font/google";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
@@ -40,6 +42,17 @@ export default function RootLayout({ children }) {
       <body>
         <Navbar />
         <main>{children}</main>
+        {/* Toast container */}
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          pauseOnHover
+          draggable
+          theme="dark"
+        />
         <Footer />
       </body>
     </html>

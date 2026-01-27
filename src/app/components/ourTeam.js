@@ -1,4 +1,6 @@
 "use client";
+import { toast } from "react-toastify";
+
 import { useState, useEffect } from "react";
 
 export default function TeamSection() {

@@ -1,4 +1,6 @@
 "use client";
+import { toast } from "react-toastify";
+
 
 import React, { useState, useEffect } from "react";
 import Sidebar from "@/app/components/Sidebar";
@@ -64,7 +66,7 @@ const AddTeamPage = () => {
       setFormData({ name: "", designation: "", image: null });
       setPreview(null);
     } catch (err) {
-      alert(err.message);
+      toast.error(err.message);
     } finally {
       setLoading(false);
     }
@@ -79,10 +81,10 @@ const AddTeamPage = () => {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
 
-      alert("Member deleted");
+      toast.success("Member deleted");
       fetchTeams();
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     }
   };
 

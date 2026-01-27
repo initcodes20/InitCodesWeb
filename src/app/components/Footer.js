@@ -1,4 +1,6 @@
 "use client";
+import { toast } from "react-toastify";
+
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
