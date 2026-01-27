@@ -1,16 +1,24 @@
 "use client";
+import { useState, useEffect } from "react";
 
 export default function TeamSection() {
-  const team = [
-    {
-      name: "Harshit Dubey",
-      role: "Founder & Lead Architect",
-      image: "/harshit.jpg",
-    },
-    { name: "Sarah Chen", role: "Head of Engineering", image: "/sarah.jpg" },
-    { name: "Marcus Volt", role: "System Designer", image: "/marcus.jpg" },
-    { name: "Elena Rose", role: "Fullstack Developer", image: "/elena.jpg" },
-  ];
+
+  const [teamList ,setTeamList] = useState([]);
+
+    const fetchTeams = async () => {
+    try {
+      const res = await fetch("/api/admin/teams");
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+      setTeamList(data.data.reverse());
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(()=>{
+    fetchTeams();
+  },[]);
   return (
     <section
       id="team"
@@ -30,14 +38,14 @@ export default function TeamSection() {
         </div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-          {team.map((member, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 m-5">
+          {teamList.map((member, index) => (
             <div key={index} className="flex flex-col items-center group">
               {/* Double-Border Image Frame */}
               <div className="relative p-2 border border-black/20 mb-8 transition-transform duration-500 group-hover:-translate-y-2">
                 <div className="border-2 border-black overflow-hidden aspect-square w-48 md:w-56">
                   <img
-                    src={member.image}
+                    src={member.imageUrl}
                     alt={member.name}
                     className="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110"
                   />
@@ -49,7 +57,7 @@ export default function TeamSection() {
                 {member.name}
               </h3>
               <p className="normal-text text-[10px] font-bold uppercase tracking-[0.2em] opacity-60">
-                {member.role}
+                {member.designation}
               </p>
             </div>
           ))}

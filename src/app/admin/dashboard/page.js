@@ -8,18 +8,6 @@ export default function Dashboard() {
 
     const router = useRouter();
 
-  const handleLogout = async () => {
-    try {
-      await fetch("/api/admin/logout", {
-        method: "POST",
-      });
-
-      // Force reload so middleware re-runs
-      window.location.href = "/login";
-    } catch (err) {
-      console.error("Logout failed");
-    }
-  };
   // Mock stats - in a real app, these would be fetched from your API
   const stats = [
     { label: "Total Insights", value: "24", growth: "+2 this week" },

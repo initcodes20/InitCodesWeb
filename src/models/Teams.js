@@ -2,11 +2,21 @@ import mongoose from "mongoose";
 
 const TeamsSchema = new mongoose.Schema(
   {
-    name: { type: String, require: true },
-    designation: { type: String, require: true },
-    imageUrl: { type: String, require: true },
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    designation: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    imageUrl: {
+      type: String,
+    },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 export default mongoose.models.Teams ||
