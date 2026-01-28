@@ -25,7 +25,7 @@ const CodeBlock = ({ inline, className, children, ...props }) => {
     <div className="relative group my-6">
       <div className="absolute right-3 top-3 z-20 flex items-center gap-2">
         {copied && (
-          <span className="text-[10px] font-black text-green-400 uppercase tracking-widest">
+          <span className="text-[10px] font-bold text-green-400 uppercase tracking-widest">
             Copied
           </span>
         )}
@@ -112,7 +112,6 @@ const AddBlogPage = () => {
   };
 
   const deleteBlog = async (id) => {
-    if (!confirm("Terminate this log entry?")) return;
     try {
       const res = await fetch(`/api/admin/blogs/${id}`, { method: "DELETE" });
       if (!res.ok) throw new Error("Delete failed");
@@ -156,13 +155,13 @@ const AddBlogPage = () => {
             <div className="flex items-center justify-between sm:justify-end gap-4 w-full sm:w-auto">
               <button 
                 onClick={() => setShowPreview(!showPreview)}
-                className="text-[10px] font-black uppercase tracking-[0.2em] border-2 border-black px-6 py-2 bg-white sm:bg-transparent hover:bg-black hover:text-white transition-all flex-1 sm:flex-none"
+                className="text-[10px] font-bold uppercase tracking-[0.2em] border-2 border-black px-6 py-2 bg-white sm:bg-transparent hover:bg-black hover:text-white transition-all flex-1 sm:flex-none"
               >
                 {showPreview ? "Editor" : "Preview"}
               </button>
               <div className="flex items-center gap-2">
                 <span className={`w-2 h-2 rounded-full animate-pulse ${editingId ? 'bg-blue-500' : 'bg-[#FF4D00]'}`}></span>
-                <span className="text-[9px] font-black uppercase tracking-widest opacity-60 text-black whitespace-nowrap">
+                <span className="text-[9px] font-bold uppercase tracking-widest opacity-60 text-black whitespace-nowrap">
                   {editingId ? "Edit Node" : "Live Node"}
                 </span>
               </div>
@@ -174,7 +173,7 @@ const AddBlogPage = () => {
             {/* EDITOR/PREVIEW CARD */}
             <div className="lg:col-span-6 order-2 lg:order-1">
               <div className="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-white">
-                <h2 className="text-xs font-black uppercase tracking-[0.2em] mb-8 text-black opacity-30">
+                <h2 className="text-xs font-bold uppercase tracking-[0.2em] mb-8 text-black opacity-30">
                   {showPreview ? "Visual Verification" : editingId ? "Modify Entry" : "New Deployment"}
                 </h2>
 
@@ -217,12 +216,12 @@ const AddBlogPage = () => {
             {/* REGISTRY LIST */}
             <div className="lg:col-span-6 order-1 lg:order-2">
               <div className="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-white">
-                <h2 className="text-xs font-black uppercase tracking-[0.2em] mb-8 text-black opacity-30">Active Insight Logs</h2>
+                <h2 className="text-xs font-bold uppercase tracking-[0.2em] mb-8 text-black opacity-30">Active Insight Logs</h2>
                 <div className="space-y-4">
                   {blogList.map((blog) => (
                     <div key={blog._id} className="group p-5 border border-black/5 rounded-2xl bg-[#fcfcfc] transition-all relative overflow-hidden">
                       <div className="flex justify-between items-start mb-2">
-                        <span className="text-[9px] font-black uppercase px-2 py-1 bg-black text-white rounded">{blog.category}</span>
+                        <span className="text-[9px] font-bold uppercase px-2 py-1 bg-black text-white rounded">{blog.category}</span>
                         
                         {/* VISIBILITY LOGIC: Always visible on mobile, Hover-reveal on Desktop */}
                         <div className="flex gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300">
@@ -235,7 +234,7 @@ const AddBlogPage = () => {
                         </div>
                       </div>
                       <h3 className="text-sm font-bold text-black mb-1 group-hover:text-[#FF4D00] transition-colors">{blog.title}</h3>
-                      <p className="text-[10px] font-black uppercase opacity-30 tracking-widest">{blog.author} • {blog.readTime}</p>
+                      <p className="text-[10px] font-bold uppercase opacity-30 tracking-widest">{blog.author} • {blog.readTime}</p>
                     </div>
                   ))}
                 </div>
