@@ -74,7 +74,7 @@ export default function FeaturedProjects({ limit }) {
           {projects.map((project) => (
             <Link
               key={project._id}
-              href={project.redirectLink || "#"}
+              href={project.redirectLink || "/"}
               target="_blank"
               className="group cursor-pointer border-2 border-black/5 p-3 hover:border-neutral-500/30 transition-all bg-white/50 backdrop-blur-sm"
             >
@@ -92,7 +92,7 @@ export default function FeaturedProjects({ limit }) {
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-[10px] font-black uppercase tracking-tighter bg-black/5 px-2 py-0.5 border border-black/5"
+                    className="text-[10px] font-bold uppercase tracking-tighter bg-black/5 px-2 py-0.5 border border-black/5"
                   >
                     {tag}
                   </span>
