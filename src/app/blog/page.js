@@ -27,10 +27,17 @@ export default function BlogPage() {
         
         {/* Main Section Header matching your screenshot */}
         <header className="mb-32">
-          <h1 className="text-7xl font-bold tracking-tighter text-[#1a1f2e] mb-8">
-            Insights<span className="text-[#a1a1a1]">.</span>
+          {/* <h1 className="text-5xl font-semibold italic retro-text tracking-tighter text-[#1a1f2e] mb-8">
+            Insights<span className="text-[#a1a1a1] !text-orange-500">.</span>
+          </h1> */}
+          <div className="flex items-center gap-4 mb-4">
+             <div className="h-1 w-12 bg-[#FF4D00]"></div>
+             <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-40">System_Archive</span>
+          </div>
+          <h1 className="text-5xl md:text-7xl italic uppercase tracking-tighter retro-text text-black mb-8">
+            Insights<span className="text-[#FF4D00] animate-pulse">_</span>
           </h1>
-          <p className="max-w-xl text-xl text-[#4a4a4a] leading-relaxed normal-text">
+          <p className="max-w-xl text-lg text-[#4a4a4a] leading-relaxed normal-text">
             Reflections on engineering excellence, scalable architectures, and 
             the future of software development at InitCodes.
           </p>
