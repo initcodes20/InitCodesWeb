@@ -1,73 +1,122 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
+// We add the { limit } prop here
+export default function FeaturedProjects({ limit }) {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-export default function FeaturedProjects({ projects }) {
+  const fetchProjects = async () => {
+    try {
+      const res = await fetch("/api/admin/projects");
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error);
+
+      // 1. Filter for only featured projects
+      let featured = data.data.filter((p) => p.isFeatured);
+
+      // 2. If a limit is provided (like on the Home page), slice the array
+      if (limit) {
+        featured = featured.slice(0, limit);
+      }
+
+      setProjects(featured);
+    } catch (error) {
+      toast.error("Failed to load featured projects");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  if (loading) return null;
+
   return (
     <section className="py-24 px-6 !bg-[#eeeeec] relative overflow-hidden border-2 border-black/5">
+      {/* Background Dot Grid Effect */}
+      <div className="line-bg opacity-10"></div>
+      
       <div className="max-w-7xl mx-auto relative z-10 text-black">
-        {/* Header Section */}
+        {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-end border-b-2 border-black pb-6 mb-12">
           <div>
             <h2 className="retro-text text-4xl md:text-5xl uppercase tracking-tighter">
               Featured Projects
             </h2>
             <p className="normal-text opacity-60 uppercase tracking-[0.2em] text-xs mt-2 font-bold">
-              A selection of our latest deployments
+              {limit ? "A selection of our latest deployments" : "All active system registry deployments"}
             </p>
           </div>
 
-          <Link
-            href="/projects"
-            className="hidden md:flex items-center gap-2 group font-bold uppercase text-[11px] tracking-[0.2em]"
-          >
-            View All Projects
-            <span className="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">
-              arrow_right_alt
-            </span>
-          </Link>
+          {/* Only show the "View All" link if we are in limited/home mode */}
+          {limit && (
+            <Link
+              href="/projects"
+              className="hidden md:flex items-center gap-2 group font-bold uppercase text-[11px] tracking-[0.2em]"
+            >
+              View All Projects
+              <span className="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">
+                arrow_right_alt
+              </span>
+            </Link>
+          )}
         </div>
 
-        {/* Project Grid */}
+        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {projects.map((project, index) => (
-            <div key={index} className="group cursor-pointer border-2 border-black/5 p-3 hover:border-neutral-500/30">
-              {/* Image Container with Grayscale Effect */}
+          {projects.map((project) => (
+            <Link
+              key={project._id}
+              href={project.redirectLink || "#"}
+              target="_blank"
+              className="group cursor-pointer border-2 border-black/5 p-3 hover:border-neutral-500/30 transition-all bg-white/50 backdrop-blur-sm"
+            >
+              {/* Image Container */}
               <div className="relative aspect-[16/9] mb-6 overflow-hidden border border-black/10 bg-black">
                 <img
-                  src={project.image}
+                  src={project.imageUrl}
                   alt={project.title}
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-105 group-hover:scale-100 opacity-80 group-hover:opacity-100"
                 />
               </div>
 
-              {/* Tech Tags */}
-              <div className="flex gap-2 mb-4">
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-sm font-bold tracking-tighter bg-black/10 px-3 py-1 border border-black/5"
+                    className="text-[10px] font-black uppercase tracking-tighter bg-black/5 px-2 py-0.5 border border-black/5"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
 
-              {/* Title and Description */}
+              {/* Project Title */}
               <h3 className="retro-text text-xl md:text-2xl mb-3 tracking-tighter">
                 {project.title}
               </h3>
-              <p className="normal-text text-sm opacity-70 leading-relaxed mb-6 font-medium">
+
+              {/* Project Description */}
+              <p className="normal-text text-sm opacity-70 leading-relaxed mb-6 font-medium line-clamp-3">
                 {project.description}
               </p>
 
-              {/* Footer Link */}
-              <div className="flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.3em] group-hover:text-[#FF4D00] transition-colors">
+              {/* Call to Action */}
+              <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] group-hover:text-[#FF4D00] transition-colors">
                 Show More
                 <span className="material-symbols-outlined text-sm">
                   open_in_new
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

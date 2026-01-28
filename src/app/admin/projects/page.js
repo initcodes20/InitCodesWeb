@@ -59,10 +59,23 @@ const AddProjectPage = () => {
 
       const res = await fetch(
         editingId ? `/api/admin/projects/${editingId}` : "/api/admin/projects",
-        {
-          method: editingId ? "PUT" : "POST",
-          body: form,
-        },
+        editingId
+          ? {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                title: formData.title,
+                description: formData.description,
+                developer: formData.developer,
+                redirectLink: formData.link,
+                isFeatured: formData.isFeatured,
+                tags: tagsArray,
+              }),
+            }
+          : {
+              method: "POST",
+              body: form, // FormData ONLY for create
+            },
       );
 
       const data = await res.json();
@@ -78,15 +91,16 @@ const AddProjectPage = () => {
     }
   };
 
-  const toggleFeatured = async (id, currentStatus) => {
+  const toggleFeatured = async (id) => {
     try {
       const res = await fetch(`/api/admin/projects/${id}`, {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ isFeatured: !currentStatus }),
       });
-      if (!res.ok) throw new Error("Status update failed");
-      toast.success("Visibility updated");
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Status update failed");
+
+      toast.success(data.message || "Visibility updated");
       fetchProjects();
     } catch (err) {
       toast.error(err.message);
@@ -94,7 +108,7 @@ const AddProjectPage = () => {
   };
 
   const deleteProject = async (id) => {
-    if (!confirm("Terminate this project record?")) return;
+    // if (!confirm("Terminate this project record?")) return;
     try {
       const res = await fetch(`/api/admin/projects/${id}`, {
         method: "DELETE",
@@ -105,6 +119,31 @@ const AddProjectPage = () => {
     } catch (err) {
       toast.error(err.message);
     }
+  };
+
+  const editProject = (id) => {
+    const project = projectList.find((p) => p._id === id);
+    if (!project) return;
+
+    setEditingId(id);
+
+    setFormData({
+      title: project.title || "",
+      description: project.description || "",
+      tags: project.tags?.join(", ") || "",
+      developer: project.developer || "InitCodes",
+      link: project.redirectLink || "",
+      isFeatured: project.isFeatured || false,
+      image: null, // image stays null unless replaced
+    });
+
+    // Show existing image (read-only preview)
+    if (project.imageUrl) {
+      setPreview(project.imageUrl);
+    }
+
+    // Scroll to form (UX boost)
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   /* ---------------- HELPERS ---------------- */
@@ -380,6 +419,7 @@ const AddProjectPage = () => {
                           </button>
 
                           <button
+                            onClick={() => editProject(project._id)}
                             className="p-2 hover:bg-black hover:text-white rounded-lg transition-colors"
                             title="Edit Project"
                           >

@@ -111,7 +111,6 @@ const AddTeamPage = () => {
   return (
     <div className="flex min-h-screen !bg-[#e5e4e1] selection:bg-black selection:text-white font-sans">
       <Sidebar />
-
       <main className="flex-1 p-8 md:p-12 mt-10 relative overflow-hidden">
         {/* Background Scanlines */}
         <div className="line-bg opacity-5"></div>

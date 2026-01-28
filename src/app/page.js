@@ -1,7 +1,6 @@
 import Link from "next/link";
 import FeaturedProjects from "@/app/components/FeaturedProjects";
 import TeamSection from "@/app/components/ourTeam";
-import { projects } from "@/app/data/project";
 
 export default function Home() {
   return (
@@ -75,7 +74,7 @@ export default function Home() {
       </main>
       {/* FEATURED PROJECTS SECTION */}
       <div>
-        <FeaturedProjects projects={projects.slice(0, 3)} />
+        <FeaturedProjects limit={3} />
       </div>
       {/* OUR TEAM */}
       <div>
