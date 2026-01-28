@@ -36,7 +36,57 @@ export default function FeaturedProjects({ limit }) {
     fetchProjects();
   }, []);
 
-  if (loading) return null;
+if (loading) {
+    return (
+      <section className="py-24 px-6 !bg-[#eeeeec] relative overflow-hidden border-2 border-black/5">
+        <div className="line-bg opacity-10"></div>
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Header Skeleton */}
+          <div className="border-b-2 border-black pb-6 mb-12 flex flex-col gap-4">
+            <div className="h-10 w-64 bg-black/10 animate-pulse"></div>
+            <div className="h-3 w-48 bg-black/5 animate-pulse"></div>
+          </div>
+
+          {/* Grid Skeleton */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="border-2 border-black/5 p-3 bg-white/30 relative overflow-hidden">
+                {/* Image Placeholder */}
+                <div className="aspect-[16/9] bg-black/5 mb-6 relative">
+                  {/* Technical Scanning Bar Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#FF4D00]/10 to-transparent h-1/2 w-full animate-scan"></div>
+                </div>
+                
+                {/* Content Placeholders */}
+                <div className="flex gap-2 mb-4">
+                  <div className="h-4 w-12 bg-black/5"></div>
+                  <div className="h-4 w-12 bg-black/5"></div>
+                </div>
+                <div className="h-6 w-3/4 bg-black/10 mb-3"></div>
+                <div className="h-12 w-full bg-black/5"></div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-12 flex flex-col items-center">
+             <p className="retro-text text-[10px] tracking-[0.4em] opacity-40 animate-pulse uppercase">
+               Synchronizing_Registry_Nodes...
+             </p>
+          </div>
+        </div>
+
+        <style jsx>{`
+          @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(200%); }
+          }
+          .animate-scan {
+            animation: scan 2s linear infinite;
+          }
+        `}</style>
+      </section>
+    );
+  }
 
   return (
     <section className="py-24 px-6 !bg-[#eeeeec] relative overflow-hidden border-2 border-black/5">
