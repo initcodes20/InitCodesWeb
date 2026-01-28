@@ -22,92 +22,66 @@ export default function BlogPage() {
   }, []);
 
   return (
-    <div className="min-h-screen !bg-[#e5e4e1] pt-32 md:pt-48 pb-20 px-6 selection:bg-[#FF4D00] selection:text-white relative overflow-hidden">
-      {/* Background Infrastructure Layer */}
-      <div className="line-bg opacity-10 fixed inset-0 pointer-events-none"></div>
-
-      <div className="max-w-6xl mx-auto relative z-10">
+    <div className="min-h-screen bg-[#e5e4e1] pt-32 md:pt-48 pb-20 px-6 font-sans">
+      <div className="max-w-7xl mx-auto">
         
-        {/* Section Header */}
-        <header className="mb-24 inline-block w-full">
-          <div className="flex items-center gap-4 mb-4">
-             <div className="h-1 w-12 bg-[#FF4D00]"></div>
-             <span className="text-[10px] font-bold uppercase tracking-[0.4em] opacity-40">System_Archive</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl italic uppercase tracking-tighter retro-text text-black mb-8">
-            Insights<span className="text-[#FF4D00]">_</span>
+        {/* Main Section Header matching your screenshot */}
+        <header className="mb-32">
+          <h1 className="text-7xl font-bold tracking-tighter text-[#1a1f2e] mb-8">
+            Insights<span className="text-[#a1a1a1]">.</span>
           </h1>
-          <div className="h-px w-full bg-black/10 mb-8"></div>
-          <p className="max-w-xl text-sm md:text-base font-bold uppercase tracking-widest leading-relaxed opacity-60">
-            Technical logs and architectural reflections on the future of software engineering.
+          <p className="max-w-xl text-xl text-[#4a4a4a] leading-relaxed normal-text">
+            Reflections on engineering excellence, scalable architectures, and 
+            the future of software development at InitCodes.
           </p>
         </header>
 
-        {/* Blog Registry */}
-        <div className="space-y-12">
+        {/* Blog Post List */}
+        <div className="space-y-32">
           {loading ? (
-             /* Technical Loading State */
-             <div className="py-20 flex flex-col items-center">
-               <div className="w-8 h-8 border-4 border-black/10 border-t-[#FF4D00] rounded-full animate-spin"></div>
-               <p className="retro-text text-[10px] mt-6 tracking-[0.4em] opacity-40 uppercase">Accessing_Database...</p>
+             <div className="py-20 flex flex-col items-start opacity-20">
+               <p className="text-xs font-bold uppercase tracking-widest animate-pulse">Synchronizing Registry...</p>
              </div>
           ) : (
             blogList.map((post) => (
               <article
                 key={post._id}
-                className="group relative border-2 border-black/5 hover:border-black/20 transition-all duration-500 p-8 md:p-12 bg-white/30 backdrop-blur-sm"
+                className="grid grid-cols-1 md:grid-cols-12 gap-8"
               >
-                {/* Accent Corner logic used in InitCodes UI */}
-                <div className="absolute top-0 right-0 w-2 h-2 bg-black opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-                  {/* Metadata Column */}
-                  <div className="md:col-span-3">
-                    <div className="flex flex-col gap-4">
-                      <span className="inline-block self-start px-3 py-1 bg-black text-white text-[12px] font-bold uppercase tracking-widest">
-                        {post.category}
+                {/* Left Side: Metadata Column */}
+                <div className="md:col-span-3 pt-2">
+                  <div className="text-[11px] font-bold tracking-[0.2em] text-[#7a7a7a] mb-4 uppercase">
+                    {/* Assuming post.date exists, otherwise use createdAt */}
+                    {post.date || new Date(post.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                  </div>
+                  <span className="inline-block border border-black/10 rounded-full px-4 py-1 text-[11px] font-bold tracking-widest text-[#4a4a4a] bg-black/5 uppercase">
+                    {post.category}
+                  </span>
+                </div>
+
+                {/* Right Side: Content Column */}
+                <div className="md:col-span-9 max-w-3xl">
+                  <Link href={`/blog/${post.slug}`} className="group block">
+                    <h2 className="text-3xl md:text-5xl font-bold text-[#1a1f2e] leading-[1.1] mb-6 tracking-tight group-hover:text-black transition-colors">
+                      {post.title}
+                    </h2>
+                    <p className="normal-text text-lg text-[#4a4a4a] leading-relaxed mb-10 opacity-80 group-hover:opacity-100 transition-opacity">
+                      {post.description.slice(0,200)+' ......'}
+                    </p>
+
+                    {/* Button matching the screenshot */}
+                    <div className="inline-flex items-center gap-3 bg-[#1a1f2e] text-white px-8 py-4 text-[10px] font-bold tracking-[0.3em] uppercase hover:bg-black transition-all">
+                      Read Post
+                      <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
+                        north_east
                       </span>
-                      <div className="space-y-1">
-                        <p className="text-[9px] font-bold uppercase opacity-30 tracking-[0.2em]">Read_Time</p>
-                        <p className="text-xs font-bold uppercase">{post.readTime}</p>
-                      </div>
                     </div>
-                  </div>
-
-                  {/* Content Column */}
-                  <div className="md:col-span-9 relative">
-                    <Link href={`/blog/${post.slug}`} className="block">
-                      <h2 className="text-3xl md:text-5xl font-medium tracking-tight retro-text leading-none mb-6 group-hover:text-[#FF4D00] transition-colors">
-                        {post.title}
-                      </h2>
-                      <p className="normal-text text-sm md:text-lg opacity-60 leading-relaxed mb-10 line-clamp-3">
-                        {post.description.trim().slice(0, 200)}...
-                      </p>
-
-                      {/* Action Button */}
-                      <div className="inline-flex items-center gap-4 py-2 group/btn">
-                        <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-black">
-                          Enter_Log
-                        </span>
-                        <div className="h-[2px] w-12 bg-black group-hover/btn:w-20 group-hover/btn:bg-[#FF4D00] transition-all duration-500"></div>
-                      </div>
-                    </Link>
-                  </div>
+                  </Link>
                 </div>
               </article>
             ))
           )}
         </div>
-
-        {/* System Footer */}
-        <footer className="mt-40 py-12 border-t-2 border-black text-center">
-           <div className="mb-4 inline-block px-4 py-1 border border-black/20 text-[9px] font-bold uppercase tracking-[0.3em]">
-             InitCodes // Insight Registry v2.0.4
-           </div>
-           <p className="text-[8px] font-bold tracking-[0.5em] uppercase opacity-20 mt-4">
-             Unauthorized Access to Registry is strictly prohibited.
-           </p>
-        </footer>
       </div>
     </div>
   );
