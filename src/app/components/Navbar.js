@@ -24,7 +24,7 @@ export default function Navbar() {
           {/* Desktop Menu */}
 
           <div className="hidden md:flex items-center space-x-12 text-sm font-medium tracking-widest uppercase">
-            {["Home", "Projects", "Blog"].map((item) => {
+            {["Home", "Projects", "Blog", "Brochure"].map((item) => {
               const href = item === "Home" ? "/" : `/${item.toLowerCase()}`;
 
               return (

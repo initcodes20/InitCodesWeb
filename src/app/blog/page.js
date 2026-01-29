@@ -32,7 +32,7 @@ export default function BlogPage() {
         <header className="mb-32">
           <div className="flex items-center gap-4 mb-4">
              <div className="h-1 w-12 bg-[#FF4D00]"></div>
-             <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-40">System_Archive</span>
+             <span className="text-[10px] font-bold uppercase tracking-[0.4em] opacity-40">System_Archive</span>
           </div>
           <h1 className="text-5xl md:text-7xl italic uppercase tracking-tighter retro-text text-black mb-8">
             Insights<span className="text-[#FF4D00] animate-pulse">_</span>
@@ -82,7 +82,7 @@ export default function BlogPage() {
                   <div className="text-[11px] font-bold tracking-[0.2em] text-[#7a7a7a] mb-4 uppercase">
                     {post.date || new Date(post.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                   </div>
-                  <span className="inline-block border border-black/10 rounded-full px-4 py-1 text-[10px] font-black tracking-widest text-[#4a4a4a] bg-black/5 uppercase">
+                  <span className="inline-block border border-black/10 rounded-full px-4 py-1 text-[10px] font-bold tracking-widest text-[#4a4a4a] bg-black/5 uppercase">
                     {post.category}
                   </span>
                 </div>

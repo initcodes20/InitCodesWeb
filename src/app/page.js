@@ -1,6 +1,7 @@
 import Link from "next/link";
 import FeaturedProjects from "@/app/components/FeaturedProjects";
 import TeamSection from "@/app/components/ourTeam";
+import BrochurePage from "./brochure/page";
 
 export default function Home() {
   return (
@@ -79,6 +80,9 @@ export default function Home() {
       {/* OUR TEAM */}
       <div>
         <TeamSection />
+      </div>
+      <div>
+        <BrochurePage />
       </div>
     </>
   );
