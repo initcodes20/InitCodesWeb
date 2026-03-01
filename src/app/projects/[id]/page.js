@@ -1,13 +1,22 @@
 import { ArrowLeft, Globe, Terminal, Box } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { headers } from "next/headers";
 
 async function getProject(id) {
-  // Use a fallback for the site URL to prevent build-time crashes
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-  const res = await fetch(`${baseUrl}/api/admin/projects/${id}`, { cache: "no-store" });
+  const headersList = headers();
+  const host = headersList.get("host");
+
+  const protocol =
+    process.env.NODE_ENV === "development" ? "http" : "https";
+
+  const res = await fetch(
+    `${protocol}://${host}/api/admin/projects/${id}`,
+    { cache: "no-store" }
+  );
 
   if (!res.ok) return null;
+
   return res.json();
 }
 
