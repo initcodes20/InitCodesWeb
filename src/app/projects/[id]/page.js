@@ -21,7 +21,7 @@ export default async function SingleProjectPage(props) {
   if (!project) return notFound();
 
   return (
-    <main className="min-h-screen bg-[#e5e4e1] pt-32 md:pt-48 pb-20 px-6 relative selection:bg-[#FF4D00] selection:text-white">
+    <main className="min-h-screen bg-[#e5e4e1] pt-25 md:pt-30 pb-20 px-6 relative selection:bg-[#FF4D00] selection:text-white">
       <div className="line-bg opacity-10 fixed inset-0 pointer-events-none"></div>
 
       <div className="max-w-6xl mx-auto relative z-10">
