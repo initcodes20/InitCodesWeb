@@ -2,6 +2,38 @@ import Project from "@/models/Project";
 import { connectDB } from "@/lib/mongodb";
 import { NextResponse } from "next/server";
 
+// -----------------------------------------------------------------------------
+// GET SINGLE PROJECT
+// -----------------------------------------------------------------------------
+
+export async function GET(req, { params }) {
+  try {
+    await connectDB();
+
+    const { id } = await params;
+
+    const project = await Project.findById(id);
+
+    if (!project) {
+      return NextResponse.json(
+        { success: false, error: "Project not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json(
+      { success: true, data: project },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("GET PROJECT ERROR:", error);
+    return NextResponse.json(
+      { success: false, error: "Failed to fetch project" },
+      { status: 500 }
+    );
+  }
+}
+
 export async function DELETE(req, { params }) {
   try {
     await connectDB();
