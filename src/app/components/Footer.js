@@ -48,7 +48,7 @@ export default function Footer() {
           </h5>
           <ul className="space-y-4 text-sm font-mono tracking-widest">
             <li>
-              <Link className="hover:text-accent hover:text-[#e77544] transition-colors" href="#">
+              <Link className="hover:text-accent hover:text-[#e77544] transition-colors" href={'/brochure'} >
                 Manifesto
               </Link>
             </li>

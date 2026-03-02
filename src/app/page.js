@@ -2,6 +2,9 @@ import Link from "next/link";
 import FeaturedProjects from "@/app/components/FeaturedProjects";
 import TeamSection from "@/app/components/ourTeam";
 import BrochurePage from "./brochure/page";
+import { ProblemSection } from "./components/ProblemsGrid";
+import { CapabilitiesSection } from "./components/TechinicalCapablities";
+import { FinalCTA } from "./components/FinalCta";
 
 export default function Home() {
   return (
@@ -75,14 +78,23 @@ export default function Home() {
       </main>
       {/* FEATURED PROJECTS SECTION */}
       <div>
-        <FeaturedProjects limit={3} />
+        {/* <FeaturedProjects limit={3} /> */}
       </div>
       {/* OUR TEAM */}
       <div>
-        <TeamSection />
+        {/* <TeamSection /> */}
       </div>
       <div>
-        <BrochurePage />
+        {/* <BrochurePage /> */}
+      </div>
+      <div>
+        <ProblemSection/>
+      </div>
+      <div>
+        <CapabilitiesSection/>
+      </div>
+      <div>
+        <FinalCTA/>
       </div>
     </>
   );

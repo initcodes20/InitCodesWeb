@@ -24,8 +24,8 @@ export default function Navbar() {
           {/* Desktop Menu */}
 
           <div className="hidden md:flex items-center space-x-12 text-sm font-medium tracking-widest uppercase">
-            {["Home", "Projects", "Blog", "Brochure"].map((item) => {
-              const href = item === "Home" ? "/" : `/${item.toLowerCase()}`;
+            {["Home", "Projects", "Blog","Use Cases", "About Us"].map((item) => {
+              const href = item === "Home" ? "/" : `/${item.toLowerCase().replace(/\s+/g, "-")}`;
 
               return (
                 <Link
@@ -98,7 +98,8 @@ export default function Navbar() {
           >
             Projects
           </Link>
-          <Link
+         
+          {/* <Link
             href={"/login"}
             style={{ transitionDelay: "400ms" }}
             className={`bg-primary text-white dark:bg-white dark:text-black px-12 py-4 text-xs font-bold uppercase tracking-[0.3em] transition-all duration-500
@@ -107,7 +108,7 @@ export default function Navbar() {
             }`}
           >
             Login
-          </Link>
+          </Link> */}
         </div>
       </div>
     </header>
