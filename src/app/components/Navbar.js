@@ -98,6 +98,14 @@ export default function Navbar() {
           >
             Projects
           </Link>
+          <Link
+            onClick={() => setIsOpen(false)}
+            style={{ transitionDelay: "200ms" }}
+            className={linkStyles}
+            href="/use-cases"
+          >
+            Use Cases
+          </Link>
          
           {/* <Link
             href={"/login"}

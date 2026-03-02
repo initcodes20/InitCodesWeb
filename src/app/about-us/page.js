@@ -2,7 +2,9 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div className='my-30'>About page
+    <div>Under Developement</div>
+    </div>
   )
 }
 
