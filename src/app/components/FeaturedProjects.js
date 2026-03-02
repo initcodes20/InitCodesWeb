@@ -46,7 +46,7 @@ export default function FeaturedProjects({ limit }) {
   }
 
   return (
-    <section className="py-24 px-6 !bg-[#eeeeec] relative overflow-hidden border-2 border-black/5 selection:bg-[#FF4D00] selection:text-white">
+    <section className=" py-24 px-6 !bg-[#eeeeec] relative overflow-hidden border-2 border-black/5 selection:bg-[#FF4D00] selection:text-white">
       <div className="line-bg opacity-10 fixed inset-0 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto relative z-10 text-black">

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export function FinalCTA() {
   return (
@@ -30,13 +31,22 @@ export function FinalCTA() {
           business.
         </p>
 
-        <button className="bg-black text-white px-12 py-6 rounded-2xl text-xs font-bold uppercase tracking-[0.4em] hover:bg-[#FF4D00] transition-all duration-500 shadow-2xl active:scale-95 flex items-center gap-4 mx-auto group">
-          Start Your Project
-          <ArrowRight
-            className="group-hover:translate-x-2 transition-transform"
-            size={20}
-          />
-        </button>
+        <Link
+  href="/contact-us"
+  className="inline-flex items-center gap-3 
+  bg-black text-white 
+  px-10 py-5 
+  text-xs font-bold uppercase tracking-[0.35em]
+  transition-all duration-300 
+  hover:bg-[#FF4D00] 
+  active:scale-95"
+>
+  Start Your Project
+  <ArrowRight
+    size={18}
+    className="transition-transform group-hover:translate-x-1"
+  />
+</Link>
       </motion.div>
     </section>
   );

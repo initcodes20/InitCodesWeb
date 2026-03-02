@@ -47,7 +47,7 @@ export default function Home() {
             </Link>
 
             <Link
-              href="/"
+              href="/contact-us"
               className="group relative px-10 py-4 border-2 border-black font-bold uppercase tracking-widest text-sm overflow-hidden inline-block"
             >
               <span
